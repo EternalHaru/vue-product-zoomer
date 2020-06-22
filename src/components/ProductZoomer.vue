@@ -48,29 +48,6 @@ import LineUp from "../assets/svg-icons/arrow-up-s-line.svg";
 const actionName = s =>
   "scrollerAt" + (s.substr(0, 1).toUpperCase() + s.substr(1).toLowerCase());
 
-const getCaculatedPanePosition = (paneStyle = "pane", rect, PanePosition) => {
-  let caculatedPosition = "";
-  if (PanePosition === "left") {
-    caculatedPosition =
-      "width:" +
-      rect.width +
-      "px;height:" +
-      rect.height +
-      "px;left:" + (paneStyle === "container" ? 0 : (0 - rect.width - window.scrollX - 5)) +
-      "px;";
-  } else if (PanePosition === "right") {
-    caculatedPosition =
-      "width:" +
-      rect.width +
-      "px;height:" +
-      rect.height +
-      "px;left:" + (paneStyle === "container" ? 0 : (rect.width + window.scrollX + 5)) +
-      "px;";
-  }
-
-  return caculatedPosition;
-}
-
 export default {
   name: "ProductZoomer",
   props: {
@@ -116,9 +93,6 @@ export default {
       return document.querySelector(
         "." + this.options.namespace + "-base-container"
       );
-    },
-    pane_container_id: function() {
-      return this.options.namespace + "-pane-container";
     },
     preview_img: function() {
       return "." + this.options.namespace + "-base-container .preview-box";
@@ -175,22 +149,9 @@ export default {
         this.options.inlinePane = true;
       } else {
         this.options.inlinePane = false;
-        this.options.paneContainer = document.getElementById(
-          this.pane_container_id
-        );
         let rect = document
           .querySelector("." + this.options.namespace + "-base-container")
           .getBoundingClientRect();
-        document
-          .getElementById(this.pane_container_id)
-          .setAttribute(
-            "style",
-            getCaculatedPanePosition(
-              this.options.pane,
-              rect,
-              this.options.zoomer_pane_position
-            )
-          );
       }
       this.drift = new Drift(
         document.querySelector(this.preview_img),
@@ -530,11 +491,5 @@ export default {
 }
 .choosed-thumb {
   border-radius: 0px;
-}
-.pane-container {
-  display: none;
-  position: absolute;
-  z-index: 10000;
-  pointer-events: none;
 }
 </style>
