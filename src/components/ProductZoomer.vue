@@ -1,11 +1,13 @@
 <template>
   <div :class="options.namespace + '-base-container scroller-at-' + options.scroller_position">
+    <div id="fancybox-anchor">
     <img
       :src="previewImg.url"
       :data-zoom="previewLargeImg.url"
       class="responsive-image preview-box"
       draggable="false"
     >
+    </div>
     <div class="thumb-list">
       <img
         @click="moveThumbs('backward')"
