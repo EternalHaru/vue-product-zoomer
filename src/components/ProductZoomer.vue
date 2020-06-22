@@ -36,7 +36,6 @@
 </template>
 
 <script>
-import Drift from "../assets/drift-zoom/src/js/Drift.js";
 import FillDown from "../assets/svg-icons/arrow-down-s-fill.svg";
 import LineDown from "../assets/svg-icons/arrow-down-s-line.svg";
 import FillLeft from "../assets/svg-icons/arrow-left-s-fill.svg";
@@ -73,7 +72,6 @@ export default {
       normal_size: [],
       large_size: [],
       choosedThumb: {},
-      drift: null,
       options: {
         zoomFactor: 4,
         pane: "container",
@@ -153,10 +151,6 @@ export default {
           .querySelector("." + this.options.namespace + "-base-container")
           .getBoundingClientRect();
       }
-      this.drift = new Drift(
-        document.querySelector(this.preview_img),
-        this.options
-      );
     });
   },
   watch: {
@@ -169,9 +163,6 @@ export default {
       });
       this.previewLargeImg = Object.assign({}, matchLargeImg);
       this.previewImg = Object.assign({}, matchNormalImg);
-      if (this.drift !== null) {
-        this.drift.setZoomImageURL(matchLargeImg.url);
-      }
     }
   },
   created() {
@@ -389,7 +380,6 @@ export default {
 };
 </script>
 <style>
-@import "../assets/drift-zoom/src/css/drift-basic.css";
 </style>
 
 <style scoped>
