@@ -1,9 +1,8 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
-const isProduction = process.env.NODE_ENV !== 'production'
+const isProduction = true
 
 module.exports = {
   mode: isProduction ? 'production' : 'development',
@@ -89,15 +88,6 @@ module.exports = {
       appMountId: 'app'
     }),
     new CleanWebpackPlugin(),
-    new UglifyJsPlugin({
-      uglifyOptions: {
-        compress: {
-          warnings: false
-        }
-      },
-      sourceMap: isProduction ? false : true,
-      parallel: true
-    })
   ],
   optimization: {
     splitChunks: {
