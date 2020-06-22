@@ -32,7 +32,6 @@
         alt="move thumb icon"
       >
     </div>
-    <div :id="pane_container_id" class="pane-container"></div>
   </div>
 </template>
 
