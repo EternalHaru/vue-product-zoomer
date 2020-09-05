@@ -164,7 +164,7 @@ export default {
         return img.id === thumb.id;
       });
       this.previewLargeImg = Object.assign({}, matchLargeImg);
-      this.previewImg = Object.assign({}, matchNormalImg);
+      this.previewImg = Object.assign({}, matchLargeImg);
     }
   },
   created() {
