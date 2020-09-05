@@ -209,7 +209,7 @@ export default {
     moveThumbs(direction) {
       let len = this.thumbs.length;
       if (direction === "backward") {
-        let matchLargeImg = this.normal_size.findIndex(img => {
+        let matchLargeImg = this.thumbs.findIndex(img => {
           return img.id === this.choosedThumb.id;
         });
         if (matchLargeImg - 1 < 0) {
@@ -223,7 +223,7 @@ export default {
 
       } else {
 
-        let matchLargeImg = this.normal_size.findIndex(img => {
+        let matchLargeImg = this.thumbs.findIndex(img => {
           return img.id === this.choosedThumb.id;
         });
         if (matchLargeImg + 1 > this.thumbs.length - 1) {
