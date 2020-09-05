@@ -209,9 +209,29 @@ export default {
     moveThumbs(direction) {
       let len = this.thumbs.length;
       if (direction === "backward") {
+        let matchLargeImg = this.normal_size.findIndex(img => {
+          return img.id === this.choosedThumb.id;
+        });
+        if (matchLargeImg - 1 < 0) {
+          this.choosedThumb = this.thumbs[this.thumbs.length - 1];
+        } else {
+          this.choosedThumb = this.thumbs[matchLargeImg - 1];
+        }
+
         const moveThumb = this.thumbs.splice(len - 1, 1);
         this.thumbs = [moveThumb[0], ...this.thumbs];
+
       } else {
+
+        let matchLargeImg = this.normal_size.findIndex(img => {
+          return img.id === this.choosedThumb.id;
+        });
+        if (matchLargeImg + 1 > this.thumbs.length - 1) {
+          this.choosedThumb = this.thumbs[0];
+        } else {
+          this.choosedThumb = this.thumbs[matchLargeImg + 1];
+        }
+
         const moveThumb = this.thumbs.splice(0, 1);
         this.thumbs = [...this.thumbs, moveThumb[0]];
       }
