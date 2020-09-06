@@ -14,6 +14,7 @@
         :src="scroller_icon_first"
         class="zoomer-control responsive-image"
         alt="move thumb icon"
+        id="left-thumb-arrow"
       >
       <img
         @mouseover="chooseThumb(thumb, $event)"
@@ -32,6 +33,7 @@
         :src="scroller_icon_second"
         class="zoomer-control responsive-image"
         alt="move thumb icon"
+        id="right_thumb_arrow"
       >
     </div>
   </div>
